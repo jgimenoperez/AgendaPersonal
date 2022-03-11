@@ -53,4 +53,8 @@ Añado un par de imagenes del aspecto final de la aplicacion.
 <img src="Images/login.PNG" width="600">
 <img src="Images/eventos.PNG" width="600">
 
+Links con documentación sobre las diferentes llamadas al API 
+- https://documenter.getpostman.com/view/10882657/UVsHUnkj
+- https://www.getpostman.com/collections/2db872f428a688b45033
 
+En la carpeta raiz del proyecto tambien se encuentra el fichero EventsAPP.postman_collection.json con la misma información

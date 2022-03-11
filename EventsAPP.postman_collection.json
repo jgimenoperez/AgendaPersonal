@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "11e07cd5-867a-4ccb-a0e1-3b70c3bc884e",
+		"name": "MERN_Calendar",
+		"description": "Colección de apis para realizar CRUD sobre la bbdd MONGODB.\n\nCreación elminación, lectura y edición de eventos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth-Crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"jose luis\",\r\n    \"email\":\"jgimenoperez@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/auth/new",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"new"
+					]
+				},
+				"description": "Auth-Crear usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth-Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"jgimenoperez@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/auth/login",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Logea usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth-Renew",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MjI5YTYxY2E0N2RjOTI4NTAxNmQzYWQiLCJuYW1lIjoiSm9zZSBMdWlzIiwiaWF0IjoxNjQ2OTM5MzgwLCJleHAiOjE2NDY5NDY1ODB9.lRq2AEvG8nc-cFNXusPk_-3SgG5Gy4xRVLmaIDGkOto",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"2@pruebads.com\",\r\n    \"password\":\"132465\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/auth/renew",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"renew"
+					]
+				},
+				"description": "Renueva token"
+			},
+			"response": []
+		},
+		{
+			"name": "Añadir_Evento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGI1Zjk4NzhmM2UzOTVhMWM5NGQ1NDIiLCJuYW1lIjoiaG9sYTIiLCJpYXQiOjE2MjI1NDcxNDksImV4cCI6MTYyMjU1NDM0OX0.MSa-IZOqBuluMlNFhFLx_Ry3iaYdTebJM3Onbk5fq8I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"trabajo pendiente\",\r\n    \"start\": 33,\r\n    \"end\": 1000000,\r\n    \"notes\":\"Comprar pastel\",\r\n    \"ACB\":13\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/events/add?=",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"add"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				},
+				"description": "Añade evento"
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Events",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MjI5YTYxY2E0N2RjOTI4NTAxNmQzYWQiLCJuYW1lIjoiSm9zZSBMdWlzIiwiaWF0IjoxNjQ2OTM5MzgwLCJleHAiOjE2NDY5NDY1ODB9.lRq2AEvG8nc-cFNXusPk_-3SgG5Gy4xRVLmaIDGkOto",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"2@pruebads.com\",\r\n    \"password\":\"132465\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/events/",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					]
+				},
+				"description": "Devuelve eventos"
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar_Evento",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGI1Zjk4NzhmM2UzOTVhMWM5NGQ1NDIiLCJuYW1lIjoiaG9sYTIiLCJpYXQiOjE2MjI1Mzg2MzEsImV4cCI6MTYyMjU0NTgzMX0.4yhMezbURsUahA-z2SzHlfsNVbjmFDWTPPn-0RSL4yo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Trabajo 5555\",\r\n    \"start\":100000,\r\n    \"end\": 200000,\r\n    \"notes\": \"Hola Mundofff\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/events/update/622a333422fa121640c416af",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"update",
+						"622a333422fa121640c416af"
+					]
+				},
+				"description": "Modifica eventos"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar_Evento Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MjI5YTYxY2E0N2RjOTI4NTAxNmQzYWQiLCJuYW1lIjoiSm9zZSBMdWlzIiwiaWF0IjoxNjQ2OTMyMjgzLCJleHAiOjE2NDY5Mzk0ODN9.BC5sYiPfbiL6a_dKkEXpFYWRBbOiBBOUaUgaEAj3JIA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"2@pruebads.com\",\r\n    \"password\":\"132465\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/events/delete/622a3e477f320c4834caec8b",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"delete",
+						"622a3e477f320c4834caec8b"
+					]
+				},
+				"description": "Borra eventos"
+			},
+			"response": []
+		},
+		{
+			"name": "Find_Events",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MjI5YTYxY2E0N2RjOTI4NTAxNmQzYWQiLCJuYW1lIjoiSm9zZSBMdWlzIiwiaWF0IjoxNjQ3MDE2ODY0LCJleHAiOjE2NDcwMjQwNjR9.7Uc9g11PilDILOs2q-yYeEegGKN4E72Qp5ziEf67O90",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/events/find",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"find"
+					]
+				},
+				"description": "Busca eventos"
+			},
+			"response": []
+		}
+	]
+}

@@ -25,8 +25,18 @@ const buscar = async (req, res = response) => {
 
     const { title, datestart, dateend } = req.body
 
-    const fechastart = datestart//new Date('2020-10-19T16:36:14.197Z');
-    const fechaend = dateend //new Date('2024-10-19T16:36:14.197Z');
+    let fechastart = datestart//new Date('2020-10-19T16:36:14.197Z');
+    let fechaend = dateend //new Date('2024-10-19T16:36:14.197Z');
+
+    if (fechastart===undefined){
+        fechastart=new Date('2020-10-19T16:36:14.197Z');
+    }
+
+    if (fechaend===undefined){
+        fechaend=new Date('2024-10-19T16:36:14.197Z');
+    }
+
+   
 
     console.log(datestart, dateend)
 
