@@ -22,19 +22,20 @@ export const Navbar = () => {
 
     return (
         <div className="navbar navbar-dark bg-dark mb-4">
-            <span className="navbar-brand">
+            <span className="navbar-brand ms-5">
                 {name}
             </span>
 
-            <div>
+            <div >
                 <input 
                     type="text" 
                     placeholder="Busqueda" 
+                    className="btn  btn-light me-3"
                     onChange={(e)=>(setbusqueda(e.target.value))}
                 />
 
                 <button
-                    className="btn  btn-light ms-3"
+                    className="btn  btn-light me-3"
                     onClick={handleSearch}
                 >
                     <i className="fa-thin fa-magnifying-glass "></i>
@@ -42,7 +43,7 @@ export const Navbar = () => {
                 </button>
 
                 <button
-                    className="btn btn-outline-danger ms-3"
+                    className="btn btn-outline-danger me-5"
                     onClick={handleLogout}
                 >
                     <i className="fas fa-sign-out-alt"></i>
