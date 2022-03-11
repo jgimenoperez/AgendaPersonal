@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { startLogout } from '../../actions/auth';
 import { eventSearch } from '../../actions/events';
+import moment from 'moment';
 import DateTimePicker from 'react-datetime-picker';
 import './DateTimePicker.css';
 
@@ -15,8 +16,13 @@ export const Navbar = () => {
     const handleLogout = () => {
         dispatch(startLogout());
     }
-    const [datestart, onChangeStart] = useState(new Date());
-    const [dateend, onChangeEnd] = useState(new Date());
+
+    const now = moment().minutes(0).seconds(0).add(7,'days'); // 3:00:00
+    const nowWeekAgo = now.clone().add(-14, 'days');
+
+
+    const [datestart, onChangeStart] = useState(nowWeekAgo.toDate());
+    const [dateend, onChangeEnd] = useState(now.toDate());
 
     const handleSearch = (e) => {
         dispatch(eventSearch(buscatexto,datestart,dateend))
@@ -49,6 +55,7 @@ export const Navbar = () => {
                 <DateTimePicker
                     onChange={onChangeEnd}
                     value={dateend}
+                    minDate={ datestart }
                     className="btn  btn-light me-3"
                 />
 
