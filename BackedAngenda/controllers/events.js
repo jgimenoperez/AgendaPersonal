@@ -18,9 +18,32 @@ const obtenerEventos = async (req, res = response) => {
 const buscar = async (req, res = response) => {
 
 
-    const { title} = req.body
+    const { title,datestart,dateend} = req.body
    
-    eventos = await Evento.find({ $or: [{ "title": new RegExp(title, 'i') }, { "notes":new RegExp(title, 'i') }] });
+    //eventos = await Evento.find({ $or: [{ "title": new RegExp(title, 'i') }, { "notes":new RegExp(title, 'i') }] });
+
+    // eventos = await Evento.find(
+
+        const fechastart = datestart//new Date('2020-10-19T16:36:14.197Z');
+        const fechaend =dateend //new Date('2024-10-19T16:36:14.197Z');
+        
+        console.log(datestart,dateend)
+
+        eventos = await Evento.find({ 
+            $and: [{ start: {$gte: fechastart}}, {end: {$lte: fechaend} }] ,
+            $or: [{ $or: [{ "title": new RegExp(title, 'i') }, { "notes":new RegExp(title, 'i') }]  }] 
+        
+        });
+  
+        //  eventos = await Evento.find(
+        //     {$and: [       {"start":{ $gte:'01/01/2021'}}
+        //     ,{$and: [{"end":{$lte:'02/02/2027'}}
+        //     ,{$or: [{"title":'%probando%'},{ "notes":'%probando%' }]}]            
+        // }
+        // ]
+        //  });
+
+
 
 
     console.log(eventos)

@@ -140,14 +140,21 @@ export const eventStartLoading = () => {
 
 
 
-export const eventSearch = (busca) => {
+export const eventSearch = (busca,datestart,dateend) => {
 
     return async (dispatch) => {
 
         // Utilizo post por que express parace que no le gusta una petición GET con body
         try {
 
-            const resp = await fetchConToken('events/find',{"title":busca},'POST' );
+            const resp = await fetchConToken('events/find',
+                {
+                    "title":busca,
+                    "datestart":datestart,
+                    "dateend":dateend
+                },
+                'POST' );
+                
             const body = await resp.json()
 
             if (body.ok) {
