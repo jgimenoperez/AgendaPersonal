@@ -29,16 +29,16 @@ const buscar = async (req, res = response) => {
     let fechaend = dateend //new Date('2024-10-19T16:36:14.197Z');
     console.log(datestart, dateend)
 
-    if (fechastart===undefined || fechastart===null){
+    if (fechastart===undefined || fechastart=="null"){
         fechastart=new Date('2020-10-19T16:36:14.197Z');
     }
 
-    if (fechaend===undefined || fechaend===null){
+    if (fechaend===undefined || fechastart=="null"){
         fechaend=new Date('2024-10-19T16:36:14.197Z');
     }
 
    
-    console.log(fechastart, fechaend)
+    console.log(datestart, dateend)
 
     const eventos = await Evento.find({
         $and: [{ start: { $gte: fechastart } }, { end: { $lte: fechaend } },{ user: uid}],
