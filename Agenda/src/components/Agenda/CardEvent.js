@@ -17,7 +17,7 @@ export const CardEvent = ({
     setVisible
 }) => {
     const dispatch = useDispatch();
-    const { events, activeEvent } = useSelector(state => state.evento);
+    const { events } = useSelector(state => state.evento);
     moment.locale('es');
 
     const handleDelete = async (e) => {

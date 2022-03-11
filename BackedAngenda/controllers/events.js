@@ -1,12 +1,16 @@
 const { response } = require('express')
 const Evento = require('../models/Evento')
+const {verifyToken} = require('../helpers/jwt')
 
 const obtenerEventos = async (req, res = response) => {
+        
+    let {uid}=verifyToken( req.header('x-token'))
 
-    const eventos = await Evento.find()
-        .populate('user', "name")
+    const eventos = await Evento.find({
+            user: uid
+          })
 
-
+        // .populate('user', "naame")
     return res.status(200).json({
         ok: true,
         eventos: eventos
@@ -16,7 +20,8 @@ const obtenerEventos = async (req, res = response) => {
 
 
 const buscar = async (req, res = response) => {
-
+    
+    let {uid}=verifyToken( req.header('x-token'))
 
     const { title, datestart, dateend } = req.body
 
@@ -25,8 +30,8 @@ const buscar = async (req, res = response) => {
 
     console.log(datestart, dateend)
 
-    eventos = await Evento.find({
-        $and: [{ start: { $gte: fechastart } }, { end: { $lte: fechaend } }],
+    const eventos = await Evento.find({
+        $and: [{ start: { $gte: fechastart } }, { end: { $lte: fechaend } },{ user: uid}],
         $or: [{ $or: [{ "title": new RegExp(title, 'i') }, { "notes": new RegExp(title, 'i') }] }]
 
     });

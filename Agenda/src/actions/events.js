@@ -171,41 +171,12 @@ export const eventSearch = (busca,datestart,dateend) => {
     }
 }
 
-
-
-
-// export const eventSearch = () =>{
-
-//     return async (dispatch) =>{
-
-//         try {
-
-//             console.log(111)
-//             const resp = await fetchConToken( 'events/find',{title:'prueba'}  );
-//             const body = await resp.json()
-
-//             if ( body.ok ) {
-
-//               const events = prepareEvents( body.eventos)
-//               dispatch( eventLoaded( body.eventos ) );
-//             }
-
-
-//         } catch (error) {
-//             console.log(error)
-//         }     
-
-//     }
-
-// }
-
 const eventLoaded = (events) => (
     {
         type: types.eventLoaded,
         payload: events
     }
 )
-
 
 export const eventLogout = () => (
 

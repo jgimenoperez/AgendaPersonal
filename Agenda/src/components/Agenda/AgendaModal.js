@@ -5,8 +5,7 @@ import moment from 'moment';
 import DateTimePicker from 'react-datetime-picker';
 import Swal from 'sweetalert2';
 
-// import { uiCloseModal } from '../../actions/ui';
-import { eventStartAddnew, eventClearActiveEvent, EventStartUpdate } from '../../actions/events';
+import { eventStartAddnew, EventStartUpdate } from '../../actions/events';
 
 
 const now = moment().minutes(0).seconds(0).add(1,'hours'); // 3:00:00

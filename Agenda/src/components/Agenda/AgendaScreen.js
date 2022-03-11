@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar } from '../ui/Navbar'
 import moment from 'moment';
-import { eventSetActive, eventClearActiveEvent, eventStartLoading } from '../../actions/events';
+import { eventClearActiveEvent, eventStartLoading } from '../../actions/events';
 import { CardEvent } from './CardEvent';
-import { uiOpenModal } from '../../actions/ui';
 import { AgendaModal } from './AgendaModal';
 import { Button, Modal } from '@nextui-org/react';
 import './AgendaScreen.css';
@@ -12,12 +11,12 @@ import './AgendaScreen.css';
 export const AgendaScreen = () => {
 
   const [visible, setVisible] = React.useState(false);
-  
+
   const handler = () => {
-    dispatch( eventClearActiveEvent() );
+    dispatch(eventClearActiveEvent());
     setVisible(true)
   };
-  
+
   const closeHandler = () => {
     setVisible(false);
   };
@@ -26,19 +25,12 @@ export const AgendaScreen = () => {
   }, [visible])
 
 
-
-  const { modalOpen } = useSelector(state => state.ui);
-
   moment.locale('es');
   const dispatch = useDispatch();
-  const { events, activeEvent } = useSelector(state => state.evento);
-  const { uid } = useSelector(state => state.auth);
-  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'month');
+  const { events } = useSelector(state => state.evento);
 
   useEffect(() => {
-
     dispatch(eventStartLoading())
-
   }, [dispatch])
 
 
@@ -72,10 +64,10 @@ export const AgendaScreen = () => {
           aria-labelledby="modal-title"
           open={visible}
           onClose={closeHandler}
-          
+
         >
           <Modal.Header>
-            <AgendaModal setVisible={setVisible}/>
+            <AgendaModal setVisible={setVisible} />
           </Modal.Header>
 
         </Modal>

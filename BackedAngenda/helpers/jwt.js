@@ -18,6 +18,22 @@ const generarJWT = (uid, name) => {
     )
 }
 
+const verifyToken=(token)=>{
+
+ 
+    try {
+        var payload = jwt.verify(token, process.env.SECRET_JWT_SEE)
+        return {
+            uid:payload.uid,
+            name:payload.name
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
 module.exports = {
-    generarJWT
+    generarJWT,
+    verifyToken
 }
